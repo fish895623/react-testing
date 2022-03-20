@@ -34,4 +34,4 @@ class Person {
 // const a = new Person()
 // a.run()
 
-// export { run }
+export { Person }
