@@ -10,6 +10,10 @@ const useStore = create((set: any) => ({
   setHello: (data: any) => {
     set({ hello: data })
   },
+  mongodb: [],
+  setMongodb: (data: any) => {
+    set({ mongodb: data })
+  },
 }))
 
 async function fetching() {

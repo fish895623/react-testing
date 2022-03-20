@@ -1,6 +1,8 @@
-export interface Person {
-  id: number
+export interface M {
+  id: string
   name: string
+}
+export interface Person extends M {
   email: string
   gender: string
   status: string
