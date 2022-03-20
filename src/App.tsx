@@ -1,29 +1,29 @@
-import create from "zustand";
-import "./App.css";
-import { useEffect } from "react";
-import { Person } from "./interfaces/Person";
+import create from "zustand"
+import "./App.css"
+import { useEffect } from "react"
+import { Person } from "./interfaces/Person"
 
 const useStore = create((set: any) => ({
   count: 0,
   hello: [],
   helloa: (data: any) => {
-    set({ hello: data });
+    set({ hello: data })
   },
-}));
+}))
 
 async function T() {
-  const response = await fetch("https://gorest.co.in/public/v2/users");
-  const finish = await response.json();
-  return finish;
+  const response = await fetch("https://gorest.co.in/public/v2/users")
+  const finish = await response.json()
+  return finish
 }
 
 function App() {
-  const { count, hello, helloa } = useStore();
+  const { count, hello, helloa } = useStore()
   useEffect(() => {
     T().then((res) => {
-      helloa(res);
-    });
-  }, [helloa]);
+      helloa(res)
+    })
+  }, [helloa])
 
   return (
     <div className="App">
@@ -40,7 +40,7 @@ function App() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
