@@ -2,6 +2,7 @@ import create from "zustand"
 import "./App.css"
 import { useEffect } from "react"
 import { Person } from "./interfaces/Person"
+import { IAA } from "./interfaces/props"
 
 const useStore = create((set: any) => ({
   count: 0,
@@ -38,10 +39,15 @@ function App() {
               <td className="status">{home.status}</td>
             </tr>
           ))}
+          <AA color="hello"></AA>
         </table>
       </div>
     </div>
   )
+}
+
+function AA(props: IAA) {
+  return <>hellod? {props.color}</>
 }
 
 export default App
