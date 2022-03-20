@@ -22,20 +22,23 @@ function App() {
 
   useEffect(() => {
     fetching().then((res) => {
-      setHello(res)
+      setHello(res.reverse())
     })
   }, [setHello])
 
   return (
     <div className="App">
       <div className="App-header">
-        <div className="Title"></div>
-        <div className="Content"></div>
-        {hello.map((home: Person) => (
-          <div>
-            {home.id}, {home.email}, {home.gender}, {home.status}
-          </div>
-        ))}
+        <table className="content">
+          {hello.map((home: Person) => (
+            <tr>
+              <th className="id">{home.id}</th>
+              <td className="email">{home.email}</td>
+              <td className="gender">{home.gender}</td>
+              <td className="status">{home.status}</td>
+            </tr>
+          ))}
+        </table>
       </div>
     </div>
   )
