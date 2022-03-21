@@ -11,7 +11,7 @@ const app = express()
 const port = 3001
 
 const root = app.get('/', (req, res) => {
-  logger.info('/ get accessed')
+  logger.info(`${req.socket.remoteAddress}/ get accessed`)
 
   GetData.then((res2) => {
     res.header('Access-Control-Allow-Origin', '*')
