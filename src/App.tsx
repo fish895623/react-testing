@@ -1,9 +1,10 @@
-import * as React from 'react'
 import create from 'zustand'
 import './App.css'
 import { useEffect } from 'react'
 import { M, Person } from './interfaces/Person'
 import axios from 'axios'
+
+document.title = 'Testing Using RESTful api'
 
 const useStore = create((set: any) => ({
   count: 0,
@@ -19,12 +20,23 @@ const useStore = create((set: any) => ({
 
 /**
  * @param url - Url to get data
- * @param type - GET, POST to get data
+ * @param method - GET, POST to get data
  * @returns - response data from axios
  */
-async function fetching({ url }: { url: string }): Promise<any> {
-  const response = await axios.get(url)
-  return Promise.resolve(response.data)
+async function fetching({
+  url,
+  method = 'get',
+}: {
+  url: string
+  method: string
+}): Promise<any> {
+  if (method.toLowerCase() === 'get') {
+    const response = await axios.get(url)
+    return Promise.resolve(response.data)
+  } else if (method.toLowerCase() === 'post') {
+    const response = await axios.post(url)
+    return Promise.resolve(response.data)
+  }
 }
 
 function App() {
@@ -32,13 +44,18 @@ function App() {
   const { setHello, setMongodb } = useStore()
 
   useEffect(() => {
-    fetching({ url: 'https://gorest.co.in/public/v2/users' }).then((res) => {
+    fetching({
+      url: 'https://gorest.co.in/public/v2/users',
+      method: 'GET',
+    }).then((res) => {
       setHello(res.reverse())
     })
-    fetching({ url: 'http://192.168.0.6:3001/' }).then((res) => {
-      console.log(res)
-      setMongodb(res)
-    })
+    fetching({ url: 'http://oreopie.ipdisk.co.kr:3001/', method: 'GET' }).then(
+      (res) => {
+        console.log(res)
+        setMongodb(res)
+      }
+    )
   }, [setHello, setMongodb])
 
   return (
