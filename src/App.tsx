@@ -52,7 +52,6 @@ function App() {
     })
     fetching({ url: 'http://oreopie.ipdisk.co.kr:3001/', method: 'GET' }).then(
       (res) => {
-        console.log(res)
         setMongodb(res)
       }
     )
