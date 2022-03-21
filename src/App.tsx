@@ -1,21 +1,21 @@
-import * as React from "react";
-import create from "zustand";
-import "./App.css";
-import { useEffect } from "react";
-import { M, Person } from "./interfaces/Person";
-import axios from "axios";
+import * as React from 'react'
+import create from 'zustand'
+import './App.css'
+import { useEffect } from 'react'
+import { M, Person } from './interfaces/Person'
+import axios from 'axios'
 
 const useStore = create((set: any) => ({
   count: 0,
   hello: [],
   setHello: (data: any) => {
-    set({ hello: data });
+    set({ hello: data })
   },
   mongodb: [],
   setMongodb: (data: any) => {
-    set({ mongodb: data });
+    set({ mongodb: data })
   },
-}));
+}))
 
 /**
  * @param url - Url to get data
@@ -23,23 +23,23 @@ const useStore = create((set: any) => ({
  * @returns - response data from axios
  */
 async function fetching({ url }: { url: string }): Promise<any> {
-  const response = await axios.get(url);
-  return Promise.resolve(response.data);
+  const response = await axios.get(url)
+  return Promise.resolve(response.data)
 }
 
 function App() {
-  const { hello, mongodb } = useStore();
-  const { setHello, setMongodb } = useStore();
+  const { hello, mongodb } = useStore()
+  const { setHello, setMongodb } = useStore()
 
   useEffect(() => {
-    fetching({ url: "https://gorest.co.in/public/v2/users" }).then((res) => {
-      setHello(res.reverse());
-    });
-    fetching({ url: "http://192.168.0.6:3001/" }).then((res) => {
-      console.log(res);
-      setMongodb(res);
-    });
-  }, [setHello, setMongodb]);
+    fetching({ url: 'https://gorest.co.in/public/v2/users' }).then((res) => {
+      setHello(res.reverse())
+    })
+    fetching({ url: 'http://192.168.0.6:3001/' }).then((res) => {
+      console.log(res)
+      setMongodb(res)
+    })
+  }, [setHello, setMongodb])
 
   return (
     <div className="App">
@@ -68,7 +68,7 @@ function App() {
         </table>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
