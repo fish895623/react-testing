@@ -64,8 +64,4 @@ function App() {
   )
 }
 
-// function AA(props: IAA) {
-//   return <>hellod? {props.color}</>
-// }
-
 export default App
