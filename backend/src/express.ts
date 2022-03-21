@@ -10,7 +10,6 @@ const logger = getLogger('logTest')
 const app = express()
 const port = 3001
 
-
 const root = app.get('/', (req, res) => {
   logger.info('/ get accessed')
 
