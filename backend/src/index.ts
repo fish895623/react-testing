@@ -1,3 +1,3 @@
-import {example} from './express'
+import { example } from './express'
 
 example()
