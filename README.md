@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+![](https://github.com/fish895623/react-testing/actions/workflows/dependency-review.yml/badge.svg)
+![](https://github.com/fish895623/react-testing/actions/workflows/codeql-analysis.yml/badge.svg)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
